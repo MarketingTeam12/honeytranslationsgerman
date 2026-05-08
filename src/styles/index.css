@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss' source(none);
+@source '../../**/*.{js,ts,jsx,tsx}';
+@import 'tw-animate-css';
+@import './default_theme.css';
+@import './globals.css';
+
+body {
+  top: 0 !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+.goog-te-gadget,
+.skiptranslate {
+  display: none !important;
+}
+
+iframe[id^=':'][class='skiptranslate'] {
+  display: none !important;
+}
