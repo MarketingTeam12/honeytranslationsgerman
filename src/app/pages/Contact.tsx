@@ -9,7 +9,8 @@ export function Contact() {
     name: '',
     email: '',
     phone: '',
-    language: '',
+    fromLanguage: '',
+    toLanguage: '',
     message: ''
   });
 
@@ -173,33 +174,47 @@ export function Contact() {
                 </div>
               </div>
 
-              {/* Select Language */}
-              <div>
-                <label htmlFor="language" className="block text-[#151249] mb-3 font-semibold">
-                  {t('contact.form.language')}
-                </label>
-                <select
-                  id="language"
-                  name="language"
-                  value={formData.language}
-                  onChange={handleChange}
-                  onFocus={() => setFocusedField('language')}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-yellow-400 focus:outline-none transition-all text-lg"
-                  style={{
-                    boxShadow: focusedField === 'language' ? '0 0 0 4px rgba(250,204,21,0.1)' : 'none'
-                  }}
-                >
-                  <option value="">{t('contact.form.languagePlaceholder')}</option>
-                  <option value="english-arabic">{t('home.contactForm.enToAr')}</option>
-                  <option value="arabic-english">{t('home.contactForm.arToEn')}</option>
-                  <option value="english-german">{t('home.contactForm.enToDe')}</option>
-                  <option value="german-english">{t('home.contactForm.deToEn')}</option>
-                  <option value="english-french">{t('home.contactForm.enToFr')}</option>
-                  <option value="english-spanish">{t('home.contactForm.enToEs')}</option>
-                  <option value="english-chinese">{t('home.contactForm.enToCn')}</option>
-                  <option value="other">{t('home.contactForm.otherPair')}</option>
-                </select>
+              {/* Language Pair */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <label htmlFor="fromLanguage" className="block text-[#151249] mb-3 font-semibold">
+                    {t('contact.form.fromLanguage')}
+                  </label>
+                  <input
+                    type="text"
+                    id="fromLanguage"
+                    name="fromLanguage"
+                    value={formData.fromLanguage}
+                    onChange={handleChange}
+                    onFocus={() => setFocusedField('fromLanguage')}
+                    onBlur={() => setFocusedField(null)}
+                    className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-yellow-400 focus:outline-none transition-all text-lg"
+                    style={{
+                      boxShadow: focusedField === 'fromLanguage' ? '0 0 0 4px rgba(250,204,21,0.1)' : 'none'
+                    }}
+                    placeholder={t('contact.form.fromLanguagePlaceholder')}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="toLanguage" className="block text-[#151249] mb-3 font-semibold">
+                    {t('contact.form.toLanguage')}
+                  </label>
+                  <input
+                    type="text"
+                    id="toLanguage"
+                    name="toLanguage"
+                    value={formData.toLanguage}
+                    onChange={handleChange}
+                    onFocus={() => setFocusedField('toLanguage')}
+                    onBlur={() => setFocusedField(null)}
+                    className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-yellow-400 focus:outline-none transition-all text-lg"
+                    style={{
+                      boxShadow: focusedField === 'toLanguage' ? '0 0 0 4px rgba(250,204,21,0.1)' : 'none'
+                    }}
+                    placeholder={t('contact.form.toLanguagePlaceholder')}
+                  />
+                </div>
               </div>
 
               {/* File Upload */}

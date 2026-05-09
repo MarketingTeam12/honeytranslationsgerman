@@ -216,6 +216,10 @@ const translationsEN = {
       phone: 'Phone Number',
       language: 'Select Language',
       languagePlaceholder: 'Choose language pair',
+      fromLanguage: 'From Language',
+      fromLanguagePlaceholder: 'Enter source language',
+      toLanguage: 'To Language',
+      toLanguagePlaceholder: 'Enter target language',
       uploadDoc: 'Upload Document (Optional)',
       uploadText: 'Drop your file here or click to browse',
       uploadFormat: 'PDF, DOC, DOCX, JPG, PNG (Max 10MB)',
@@ -225,7 +229,7 @@ const translationsEN = {
       sendButton: 'Send Message',
       namePlaceholder: 'John Doe',
       emailPlaceholder: 'john@example.com',
-      phonePlaceholder: '+49 30 XXX XXXX'
+      phonePlaceholder: '+91 7299005577'
     },
     faq: {
       title: 'Quick Questions',
@@ -246,20 +250,20 @@ const translationsEN = {
       emailAddress: 'sales@honeytranslations.com',
       emailNote: 'We reply within one German business day',
       phoneTitle: 'Phone / WhatsApp',
-      phoneNumber: '+32 2 XXX XXXX',
+      phoneNumber: '+91 7299005577',
       phoneNote: 'Available 9AM-6PM CET',
       locationTitle: 'Office Location',
-      locationAddress: 'Berlin, Germany',
-      locationNote: 'Germany-wide support by appointment and online',
+      locationAddress: 'Remote',
+      locationNote: 'Germany-wide remote support by appointment and online',
       hoursTitle: 'Business Hours',
       hoursWeekday: 'Mon-Fri: 9AM-6PM',
       hoursSunday: 'Weekend: By appointment'
     },
     map: {
-      title: 'Visit Our Office',
-      subtitle: 'Serving Berlin and all major German cities',
-      location: 'Berlin, Germany',
-      center: 'German Translation Services Center'
+      title: 'Remote Translation Support',
+      subtitle: 'Serving clients online across Germany and beyond',
+      location: 'Remote',
+      center: 'Honey Translation Services Online'
     },
     cta: {
       title: 'Need Help with a Translation?',
@@ -363,74 +367,6 @@ const translationsEN = {
       badge: 'Guaranteed',
       closing: 'We build long-term Germany language partnerships, not just translations.'
     },
-    specialized: {
-      title: 'Specialized Solutions',
-      subtitle: 'Beyond Translation',
-      intro: 'In addition to translation, we provide language support services to ensure clarity and consistency.',
-      service1: 'Proofreading & Editing',
-      service1Desc: 'Refine and perfect your translated content',
-      service2: 'Localization Services',
-      service2Desc: 'Adaptation for German French, Dutch and English audiences',
-      service3: 'Content Adaptation',
-      service3Desc: 'Rewrite content for Germany-specific search intent and local context',
-      service4: 'Multilingual Content Review',
-      service4Desc: 'Quality checks across languages',
-      outro: 'These services ensure your message sounds natural and professional.'
-    },
-    workflow: {
-      title: 'Our Workflow',
-      subtitle: 'How We Work',
-      step1: 'Content Review',
-      step1Desc: 'We assess your content, purpose, and target audience.',
-      step2: 'Expert Translation',
-      step2Desc: 'Professional translators handle your project with precision.',
-      step3: 'Quality Assurance',
-      step3Desc: 'Multiple checks for accuracy, tone, and clarity.',
-      step4: 'Final Delivery',
-      step4Desc: 'On-time delivery with post-delivery support if needed.'
-    },
-    industries: {
-      title: 'Industries We Serve',
-      subtitle: "We work with clients across Germany's key industries",
-      industry1: 'German Companies & Startups',
-      industry2: 'E-commerce',
-      industry3: 'Education & Research',
-      industry4: 'Legal, Government & Communes',
-      industry5: 'Marketing & Media',
-      industry6: 'Residents, Expats & Freelancers',
-      note: 'Every industry receives the same level of care and professionalism.'
-    },
-    quality: {
-      title: 'Quality & Confidentiality',
-      subtitle: 'Our Promise to You',
-      feature1: 'Strict Confidentiality',
-      feature1Desc: 'All documents are handled with complete privacy and security, from German identity documents and certificates to business contracts and medical files.',
-      feature2: 'Human-Reviewed Translations',
-      feature2Desc: 'Every translation is reviewed by native speakers to ensure authenticity and natural flow.',
-      feature3: 'German Cultural & Linguistic Accuracy',
-      feature3Desc: 'We preserve meaning, tone and local language usage for French, Dutch, German and English communication in Germany.',
-      feature4: 'Commitment to Deadlines',
-      feature4Desc: 'On-time delivery guaranteed. We respect your timeline and work accordingly.',
-      note: 'Your content is handled with complete care and respect.'
-    },
-    whyUs: {
-      title: 'Why Choose Honey Translation Germany',
-      subtitle: 'Our Sweet Advantage',
-      feature1: 'Human-Centered Approach',
-      feature1Desc: 'We prioritize meaning and context over word-for-word translation.',
-      feature2: 'Clear Communication',
-      feature2Desc: 'Transparent process with updates throughout your project.',
-      feature3: 'Consistent Quality',
-      feature3Desc: 'Every project meets our rigorous standards for excellence.',
-      feature4: 'Flexible Service Options',
-      feature4Desc: 'Scalable solutions for individuals, SMEs, legal firms, healthcare providers, universities and German market expansion.',
-      feature5: 'Client-Focused Support',
-      feature5Desc: 'Dedicated support for Germany translation requests, deadlines, formats and delivery requirements.',
-      feature6: 'Long-Term Partnerships',
-      feature6Desc: 'We build long-term partnerships with clients who need reliable language support in Germany.',
-      badge: 'Guaranteed',
-      closing: 'We build long-term Germany language partnerships, not just translations.'
-    },
     cta: {
       title: 'Ready to Make Your Message Global?',
       subtitle: 'Let Honey Translation handle your Germany translation, localization and multilingual content needs with clarity and confidence.',
@@ -459,7 +395,7 @@ const translationsEN = {
     websiteLocalization: 'Website Localization',
     contactTitle: 'Contact',
     phone: 'Phone',
-    phoneNumber: '7299005577',
+    phoneNumber: '+91 7299005577',
     email: 'Email',
     emailAddress: 'sales@honeytranslations.com',
     location: 'Location',
@@ -687,7 +623,7 @@ const translationsEN = {
 
 const translationsDE = {
   nav: {
-    home: 'Startseite',
+    home: 'Home',
     about: 'Über uns',
     services: 'Dienstleistungen',
     contact: 'Kontakt',
@@ -849,6 +785,10 @@ const translationsDE = {
       phone: 'Telefonnummer',
       language: 'Sprache auswählen',
       languagePlaceholder: 'Wählen Sie das Sprachpaar',
+      fromLanguage: 'Ausgangssprache',
+      fromLanguagePlaceholder: 'Enter source language',
+      toLanguage: 'Zielsprache',
+      toLanguagePlaceholder: 'Enter target language',
       uploadDoc: 'Dokument hochladen (optional)',
       uploadText: 'Ziehen Sie Ihre Datei hierher oder klicken Sie, um zu durchsuchen',
       uploadFormat: 'PDF, DOC, DOCX, JPG, PNG (Max. 10 MB)',
@@ -858,7 +798,7 @@ const translationsDE = {
       sendButton: 'Nachricht senden',
       namePlaceholder: 'Max Mustermann',
       emailPlaceholder: 'max@beispiel.de',
-      phonePlaceholder: '+49 30 XXX XXXX'
+      phonePlaceholder: '+91 7299005577'
     },
     faq: {
       title: 'Schnelle Fragen',
@@ -879,20 +819,20 @@ const translationsDE = {
       emailAddress: 'sales@honeytranslations.com',
       emailNote: 'Wir antworten innerhalb eines Werktages',
       phoneTitle: 'Telefon / WhatsApp',
-      phoneNumber: '+49 30 XXX XXXX',
+      phoneNumber: '+91 7299005577',
       phoneNote: 'Verfügbar 9–18 Uhr MEZ',
       locationTitle: 'Standort',
-      locationAddress: 'Berlin, Deutschland',
-      locationNote: 'Deutschlandweit verfügbar per Termin und online',
+      locationAddress: 'Remote',
+      locationNote: 'Deutschlandweit remote per Termin und online verfügbar',
       hoursTitle: 'Öffnungszeiten',
       hoursWeekday: 'Mo-Fr: 9–18 Uhr',
       hoursSunday: 'Wochenende: Nach Vereinbarung'
     },
     map: {
-      title: 'Besuchen Sie unser Büro',
-      subtitle: 'Wir betreuen Berlin und alle wichtigen deutschen Städte',
-      location: 'Berlin, Deutschland',
-      center: 'Deutsches Übersetzungszentrum'
+      title: 'Remote-Übersetzungsservice',
+      subtitle: 'Online-Service für Kunden in ganz Deutschland und darüber hinaus',
+      location: 'Remote',
+      center: 'Honey Translation Services Online'
     },
     cta: {
       title: 'Benötigen Sie Hilfe bei einer Übersetzung?',
@@ -1024,7 +964,7 @@ const translationsDE = {
     websiteLocalization: 'Website-Lokalisierung',
     contactTitle: 'Kontakt',
     phone: 'Telefon',
-    phoneNumber: '7299005577',
+    phoneNumber: '+91 7299005577',
     email: 'E-Mail',
     emailAddress: 'sales@honeytranslations.com',
     location: 'Standort',
@@ -1039,7 +979,7 @@ const translationsDE = {
     description: 'Geben Sie Ihre Daten ein und unser Expertenteam kontaktiert Sie innerhalb von 24 Stunden mit einem persönlichen Angebot.',
     namePlaceholder: 'Ihr vollständiger Name',
     emailPlaceholder: 'Ihre E-Mail-Adresse',
-    phonePlaceholder: '+49 30 XXX XXXX',
+    phonePlaceholder: '+91 7299005577',
     submitButton: 'Übersetzung anfordern',
     securityNote: 'Ihre Informationen sind sicher und vertraulich'
   },
@@ -1249,5 +1189,3 @@ const translationsDE = {
     }
   }
 };
-
-

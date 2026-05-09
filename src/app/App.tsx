@@ -11,6 +11,8 @@ import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
+import { WebsiteLocalization } from './pages/WebsiteLocalization';
 import { CEO } from './pages/CEO';
 import { Team } from './pages/Team';
 import { MissionVision } from './pages/MissionVision';
@@ -85,8 +87,10 @@ function AppShell() {
       <Route path="/services/graphic-design" element={<GraphicDesignService />} />
       <Route path="/services/transcription" element={<TranscriptionService />} />
       <Route path="/services/subtitling" element={<SubtitlingService />} />
+      <Route path="/website-localization" element={<WebsiteLocalization />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/refund-policy" element={<RefundPolicy />} />

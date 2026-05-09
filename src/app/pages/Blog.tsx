@@ -1,11 +1,19 @@
 import { Calendar, ArrowRight, ChevronRight, Globe, Mail } from 'lucide-react';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { blogCopy, blogPosts, featuredPosts } from './blogData';
 
 export function Blog() {
+  const { language } = useLanguage();
+  const copy = blogCopy[language];
+  const featuredPost = featuredPosts[language];
+  const posts = blogPosts[language];
   const [activeFilter, setActiveFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const normalizedFilter = language === 'DE' && activeFilter === 'All' ? 'Alle' : activeFilter;
 
   const handleNewsletterSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,71 +24,9 @@ export function Blog() {
     setNewsletterEmail('');
   };
 
-  const categories = ['All', 'Translation', 'Localization', 'Business', 'Languages', 'Culture'];
-
-  const featuredPost = {
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop',
-    title: 'The Future of AI in Professional Translation Services',
-    excerpt: 'Discover how artificial intelligence is transforming the translation industry while maintaining the human touch that ensures cultural accuracy and nuanced communication.',
-    category: 'Industry Trends',
-    date: 'December 10, 2025',
-    readTime: '8 min read'
-  };
-
-  const blogPosts = [
-    {
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop',
-      title: 'Top 10 Translation Mistakes That Cost Businesses Millions',
-      excerpt: 'Learn about the most common translation errors and how to avoid them in your international business communications.',
-      category: 'Business',
-      date: 'December 8, 2025',
-      readTime: '6 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=500&fit=crop',
-      title: 'Understanding Legal Translation: A Comprehensive Guide',
-      excerpt: 'Everything you need to know about certified legal translations for international contracts, immigration, and court documents.',
-      category: 'Translation',
-      date: 'December 5, 2025',
-      readTime: '10 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&h=500&fit=crop',
-      title: 'Cultural Nuances in Arabic Translation',
-      excerpt: 'Explore the importance of cultural sensitivity when translating content for Arabic-speaking markets.',
-      category: 'Culture',
-      date: 'December 3, 2025',
-      readTime: '7 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=500&fit=crop',
-      title: 'Website Localization Best Practices for 2025',
-      excerpt: 'A complete guide to adapting your website for German audiences while maintaining brand consistency.',
-      category: 'Localization',
-      date: 'November 30, 2025',
-      readTime: '9 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&h=500&fit=crop',
-      title: 'How to Choose the Right Translation Service Provider',
-      excerpt: 'Key factors to consider when selecting a professional translation partner for your business needs.',
-      category: 'Business',
-      date: 'November 28, 2025',
-      readTime: '5 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=500&fit=crop',
-      title: 'The Rise of Remote Interpretation Services',
-      excerpt: 'How video conferencing technology is revolutionizing interpretation services across Germany and internationally.',
-      category: 'Translation',
-      date: 'November 25, 2025',
-      readTime: '6 min read'
-    }
-  ];
-
-  const filteredPosts = activeFilter === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category.toLowerCase().includes(activeFilter.toLowerCase()));
+  const filteredPosts = normalizedFilter === 'All' || normalizedFilter === 'Alle'
+    ? posts
+    : posts.filter(post => post.category.toLowerCase().includes(normalizedFilter.toLowerCase()));
 
   return (
     <div className="pt-16">
@@ -96,14 +42,14 @@ export function Blog() {
         <div className="container mx-auto max-w-4xl text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-5 py-2 bg-white rounded-full shadow-md border border-gray-100 mb-8">
             <div className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 animate-pulse"></div>
-            <span className="text-sm font-medium text-gray-700">Latest Updates</span>
+            <span className="text-sm font-medium text-gray-700">{copy.latestUpdates}</span>
           </div>
 
           <h1 className="text-6xl md:text-7xl mb-8 font-bold text-[#151249]">
-            Insights & Articles
+            {copy.title}
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Explore expert articles on translation, languages, global communication, and industry updates.
+            {copy.subtitle}
           </p>
 
           {/* Language icons decoration */}
@@ -142,7 +88,7 @@ export function Blog() {
                 {/* Featured Badge */}
                 <div className="absolute top-6 left-6">
                   <div className="px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] rounded-full text-sm font-bold shadow-lg">
-                    Featured
+                    {copy.featured}
                   </div>
                 </div>
               </div>
@@ -167,10 +113,10 @@ export function Blog() {
                 </p>
 
                 <div className="flex items-center gap-6">
-                  <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] rounded-xl hover:shadow-[0_0_30px_rgba(250,204,21,0.5)] transition-all font-bold">
-                    Read More
+                  <Link to={`/blog/${featuredPost.slug}`} className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] rounded-xl hover:shadow-[0_0_30px_rgba(250,204,21,0.5)] transition-all font-bold">
+                    {copy.readMore}
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Link>
                   <span className="text-gray-500 text-sm">{featuredPost.readTime}</span>
                 </div>
               </div>
@@ -183,12 +129,12 @@ export function Blog() {
       <section className="py-8 bg-gray-50 px-6 sticky top-16 z-40 border-b border-gray-200 backdrop-blur-sm bg-gray-50/95">
         <div className="container mx-auto max-w-7xl">
           <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
-            {categories.map((category) => (
+            {copy.categories.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveFilter(category)}
+                onClick={() => setActiveFilter(category === 'Alle' ? 'All' : category)}
                 className={`px-6 py-2.5 rounded-full font-semibold transition-all whitespace-nowrap ${
-                  activeFilter === category
+                  normalizedFilter === category
                     ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] shadow-lg shadow-yellow-400/30'
                     : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-[#151249] border border-gray-200'
                 }`}
@@ -240,10 +186,10 @@ export function Blog() {
                     {post.excerpt}
                   </p>
 
-                  <button className="inline-flex items-center gap-2 text-[#151249] font-semibold hover:gap-3 transition-all group-hover:text-yellow-600">
-                    Read More
+                  <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[#151249] font-semibold hover:gap-3 transition-all group-hover:text-yellow-600">
+                    {copy.readMore}
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}
@@ -253,8 +199,8 @@ export function Blog() {
           {filteredPosts.length === 0 && (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">📭</div>
-              <h3 className="text-2xl font-bold text-[#151249] mb-2">No Articles Found</h3>
-              <p className="text-gray-600">Try selecting a different category</p>
+              <h3 className="text-2xl font-bold text-[#151249] mb-2">{copy.emptyTitle}</h3>
+              <p className="text-gray-600">{copy.emptyText}</p>
             </div>
           )}
         </div>
@@ -276,10 +222,10 @@ export function Blog() {
                     <Globe className="w-8 h-8 text-[#151249]" />
                   </div>
                   <h2 className="text-4xl font-bold text-white mb-4">
-                    Stay Updated With Language Insights
+                    {copy.newsletterTitle}
                   </h2>
                   <p className="text-white/80 text-lg leading-relaxed">
-                    Get expert translation tips, industry news, and exclusive content delivered to your inbox.
+                    {copy.newsletterText}
                   </p>
                 </div>
 
@@ -293,7 +239,7 @@ export function Blog() {
                         required
                         value={newsletterEmail}
                         onChange={(event) => setNewsletterEmail(event.target.value)}
-                        placeholder="Enter your email address"
+                        placeholder={copy.emailPlaceholder}
                         className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-white/20 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/50 focus:border-yellow-400 focus:outline-none transition-all"
                       />
                     </div>
@@ -301,10 +247,10 @@ export function Blog() {
                       type="submit"
                       className="w-full px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] rounded-xl hover:shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all font-bold text-lg"
                     >
-                      Subscribe Now
+                      {copy.subscribe}
                     </button>
                     <p className="text-white/60 text-xs text-center">
-                      We respect your privacy. Unsubscribe at any time.
+                      {copy.privacy}
                     </p>
                   </form>
                 </div>
@@ -351,7 +297,7 @@ export function Blog() {
           </div>
 
           <p className="text-center text-gray-500 text-sm mt-6">
-            Page {currentPage} of 5
+            {copy.page} {currentPage} {copy.of} 5
           </p>
         </div>
       </section>

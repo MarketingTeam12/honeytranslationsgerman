@@ -80,20 +80,20 @@ export function Footer() {
             <div className="h-px bg-gradient-to-r from-yellow-400 via-yellow-400/50 to-transparent mb-6 w-12"></div>
             <ul className="space-y-3.5">
               {[
-                t('footer.docTranslation'),
-                t('footer.legalTranslation'),
-                t('footer.medicalTranslation'),
-                t('footer.technicalTranslation'),
-                t('footer.subtitles'),
-                t('footer.websiteLocalization')
+                { label: t('footer.docTranslation'), to: '/services' },
+                { label: t('footer.legalTranslation'), to: '/services' },
+                { label: t('footer.medicalTranslation'), to: '/services' },
+                { label: t('footer.technicalTranslation'), to: '/services' },
+                { label: t('footer.subtitles'), to: '/services' },
+                { label: t('footer.websiteLocalization'), to: '/website-localization' }
               ].map((service, index) => (
                 <li key={index}>
                   <Link 
-                    to="/services" 
+                    to={service.to} 
                     className="text-gray-400 hover:text-yellow-400 transition-all text-sm flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-yellow-400/0 group-hover:bg-yellow-400 transition-all group-hover:shadow-[0_0_8px_rgba(250,204,21,0.6)]"></span>
-                    <span className="group-hover:translate-x-1 transition-transform">{service}</span>
+                    <span className="group-hover:translate-x-1 transition-transform">{service.label}</span>
                   </Link>
                 </li>
               ))}
@@ -115,7 +115,7 @@ export function Footer() {
                   </div>
                   <div>
                     <div className="text-xs text-gray-500 mb-1">{t('footer.phone')}</div>
-                    <a href="tel:7299005577" className="text-sm text-gray-300 hover:text-yellow-400 transition-colors">
+                    <a href="tel:+917299005577" className="text-sm text-gray-300 hover:text-yellow-400 transition-colors">
                       {t('footer.phoneNumber')}
                     </a>
                   </div>
