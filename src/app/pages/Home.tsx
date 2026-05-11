@@ -191,7 +191,7 @@ export function Home() {
             {/* Right - Orbital Animation System */}
             <OrbitAnimation items={[
               { angle: 0, text: 'ZH', label: 'Chinese', id: 0 },
-              { angle: 60, text: 'AR', label: 'Arabic', id: 1 },
+              { angle: 60, text: 'FR', label: 'French', id: 1 },
               { angle: 120, text: 'ES', label: 'Spanish', id: 2 },
               { angle: 180, text: 'DE', label: 'German', id: 3 },
               { angle: 240, text: 'HI', label: 'Hindi', id: 4 },
@@ -769,8 +769,6 @@ export function Home() {
                       } bg-white/80 backdrop-blur-sm focus:outline-none appearance-none cursor-pointer`}
                     >
                       <option value="">{t('home.contactForm.languagePair')}</option>
-                      <option value="english-arabic">{t('home.contactForm.enToAr')}</option>
-                      <option value="arabic-english">{t('home.contactForm.arToEn')}</option>
                       <option value="english-french">{t('home.contactForm.enToFr')}</option>
                       <option value="english-spanish">{t('home.contactForm.enToEs')}</option>
                       <option value="english-chinese">{t('home.contactForm.enToCn')}</option>

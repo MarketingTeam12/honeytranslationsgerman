@@ -860,3 +860,31 @@
     padding-bottom: 4rem;
   }
 }
+
+.admin-input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgb(226 232 240);
+  background: rgb(248 250 252);
+  padding: 1rem;
+  color: #151249;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-input::placeholder {
+  color: rgb(148 163 184);
+}
+
+.admin-input:focus {
+  border-color: #151249;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(21, 18, 73, 0.1);
+}
+
+.admin-input-compact {
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}

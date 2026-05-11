@@ -31,5 +31,17 @@ export default defineConfig({
   },
   server: {
     allowedHosts: ['sherell-prethyroid-marcelene.ngrok-free.dev'],
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5175',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/uploads/blog': {
+        target: 'http://localhost:5175',
+        changeOrigin: true,
+        secure: false,
+      }
+    }
   },
 })

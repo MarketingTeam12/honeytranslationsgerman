@@ -1,13 +1,68 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Calendar } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { blogCopy, getAllBlogPosts } from './blogData';
+import { BlogPost as BlogPostType, blogCopy, getAllBlogPosts } from './blogData';
+import { fetchPublishedBlogBySlug, resolveBlogImage } from '../lib/blogApi';
 
 export function BlogPost() {
   const { slug } = useParams();
   const { language } = useLanguage();
   const copy = blogCopy[language];
-  const post = getAllBlogPosts(language).find((item) => item.slug === slug);
+  const staticPost = getAllBlogPosts(language).find((item) => item.slug === slug);
+  const [dynamicPost, setDynamicPost] = useState<BlogPostType | null>(null);
+  const [isLoading, setIsLoading] = useState(!staticPost);
+  const post = dynamicPost || staticPost;
+
+  useEffect(() => {
+    if (!slug || staticPost) {
+      setIsLoading(false);
+      return;
+    }
+
+    let isMounted = true;
+    setIsLoading(true);
+
+    fetchPublishedBlogBySlug(slug)
+      .then((blog) => {
+        if (isMounted) {
+          setDynamicPost(blog);
+        }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [slug, staticPost]);
+
+  useEffect(() => {
+    if (!post) return;
+
+    document.title = post.seoTitle || post.title;
+    const description = post.seoDescription || post.excerpt;
+    let metaDescription = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = 'description';
+      document.head.appendChild(metaDescription);
+    }
+
+    metaDescription.content = description;
+  }, [post]);
+
+  if (isLoading) {
+    return (
+      <div className="px-6 py-32 text-center">
+        <h1 className="mb-4 text-4xl font-bold text-[#151249]">Loading article...</h1>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
@@ -44,7 +99,7 @@ export function BlogPost() {
 
       <section className="bg-white px-6 py-12">
         <div className="container mx-auto max-w-4xl">
-          <img src={post.image} alt={post.title} className="mb-10 aspect-video w-full rounded-2xl object-cover shadow-xl" />
+          <img src={resolveBlogImage(post.image)} alt={post.title} className="mb-10 aspect-video w-full rounded-2xl object-cover shadow-xl" />
           <div className="space-y-6 text-lg leading-relaxed text-gray-700">
             {post.content.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>

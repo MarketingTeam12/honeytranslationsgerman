@@ -80,11 +80,11 @@ export function Footer() {
             <div className="h-px bg-gradient-to-r from-yellow-400 via-yellow-400/50 to-transparent mb-6 w-12"></div>
             <ul className="space-y-3.5">
               {[
-                { label: t('footer.docTranslation'), to: '/services' },
-                { label: t('footer.legalTranslation'), to: '/services' },
-                { label: t('footer.medicalTranslation'), to: '/services' },
-                { label: t('footer.technicalTranslation'), to: '/services' },
-                { label: t('footer.subtitles'), to: '/services' },
+                { label: t('footer.docTranslation'), to: '/document-translation' },
+                { label: t('footer.legalTranslation'), to: '/legal-translation' },
+                { label: t('footer.medicalTranslation'), to: '/medical-translation' },
+                { label: t('footer.technicalTranslation'), to: '/technical-translation' },
+                { label: t('footer.subtitles'), to: '/subtitles-transcription' },
                 { label: t('footer.websiteLocalization'), to: '/website-localization' }
               ].map((service, index) => (
                 <li key={index}>

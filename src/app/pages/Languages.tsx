@@ -1,6 +1,6 @@
 export function Languages() {
   const languages = [
-    'Arabic', 'English', 'Tamil', 'Telugu', 'Hindi', 'Malayalam', 'French', 'German', 
+    'English', 'Tamil', 'Telugu', 'Hindi', 'Malayalam', 'French', 'German', 
     'Spanish', 'Chinese', 'Japanese', 'Korean', 'Portuguese', 'Russian', 'Italian',
     'Dutch', 'Turkish', 'Polish', 'Swedish', 'Danish', 'Norwegian', 'Finnish',
     'Greek', 'Hebrew', 'Thai', 'Vietnamese', 'Indonesian', 'Malay', 'Bengali',

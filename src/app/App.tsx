@@ -12,7 +12,13 @@ import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
-import { WebsiteLocalization } from './pages/WebsiteLocalization';
+import { BlogAdminDashboard, BlogAdminLogin } from './pages/BlogAdmin';
+import { DocumentTranslation } from './pages/services/DocumentTranslation';
+import { LegalTranslation } from './pages/services/LegalTranslation';
+import { MedicalTranslation } from './pages/services/MedicalTranslation';
+import { TechnicalTranslation } from './pages/services/TechnicalTranslation';
+import { SubtitlesTranscription } from './pages/services/SubtitlesTranscription';
+import { WebsiteLocalization } from './pages/services/WebsiteLocalization';
 import { CEO } from './pages/CEO';
 import { Team } from './pages/Team';
 import { MissionVision } from './pages/MissionVision';
@@ -43,23 +49,28 @@ import { SubtitlingService } from './pages/services/SubtitlingService';
 function AppShell() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/blog/admin');
 
   useEffect(() => {
     setIsPopupOpen(false);
+
+    if (isAdminRoute) {
+      return;
+    }
 
     const timer = window.setTimeout(() => {
       setIsPopupOpen(true);
     }, 5000);
 
     return () => window.clearTimeout(timer);
-  }, [location.pathname]);
+  }, [location.pathname, isAdminRoute]);
 
   return (
     <div className="min-h-screen bg-white">
-      <ScrollProgressBar />
-      <Header onOpenPopup={() => setIsPopupOpen(true)} />
-      <Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
-      <SiteTranslator />
+      {!isAdminRoute && <ScrollProgressBar />}
+      {!isAdminRoute && <Header onOpenPopup={() => setIsPopupOpen(true)} />}
+      {!isAdminRoute && <Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />}
+      {!isAdminRoute && <SiteTranslator />}
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
@@ -87,15 +98,22 @@ function AppShell() {
       <Route path="/services/graphic-design" element={<GraphicDesignService />} />
       <Route path="/services/transcription" element={<TranscriptionService />} />
       <Route path="/services/subtitling" element={<SubtitlingService />} />
+      <Route path="/document-translation" element={<DocumentTranslation />} />
+      <Route path="/legal-translation" element={<LegalTranslation />} />
+      <Route path="/medical-translation" element={<MedicalTranslation />} />
+      <Route path="/technical-translation" element={<TechnicalTranslation />} />
+      <Route path="/subtitles-transcription" element={<SubtitlesTranscription />} />
       <Route path="/website-localization" element={<WebsiteLocalization />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/admin" element={<BlogAdminLogin />} />
+      <Route path="/blog/admin/dashboard" element={<BlogAdminDashboard />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/refund-policy" element={<RefundPolicy />} />
     </Routes>
-    <Footer />
+    {!isAdminRoute && <Footer />}
   </div>
   );
 }

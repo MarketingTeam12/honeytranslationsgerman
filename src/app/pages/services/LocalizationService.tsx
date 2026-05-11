@@ -343,7 +343,7 @@ export function LocalizationService() {
             <div className="flex flex-wrap justify-center gap-4 text-lg text-[#151249]">
               {[
                 'English (US/UK)', 'French (FR/CA)', 'Spanish (EU/LATAM)', 'German',
-                'French', 'Dutch', 'German', 'English', 'Arabic & European languages'
+                'French', 'Dutch', 'German', 'English', 'European languages'
               ].map((language, idx) => (
                 <span key={idx} className="font-semibold">
                   {language}{idx < 8 ? ' •' : ''}

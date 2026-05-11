@@ -1,15 +1,103 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   FileText, Globe as GlobeIcon, TrendingUp, Scale, GraduationCap,
   Briefcase, ShoppingCart, BookOpen, Building2, Users, Sparkles,
   CheckCircle2, Shield, Clock, Target, Award, Eye, MessageSquare,
-  Zap, Heart, Star, ArrowRight, Languages, Search, FileCheck, Layers
+  Zap, Heart, Star, ArrowRight, Languages, Search, FileCheck, Layers,
+  HeartPulse, Settings, Subtitles
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Services() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const location = useLocation();
+  const serviceDetails = {
+    EN: {
+      documentTranslation: {
+        title: t('footer.docTranslation'),
+        description: 'Trusted document translation for certificates, reports, applications and official records with precise formatting and confidentiality.',
+        bullets: ['Immigration and personal certificates', 'Academic transcripts and diplomas', 'Business reports and proposals', 'Legal and administrative files']
+      },
+      legalTranslation: {
+        title: t('footer.legalTranslation'),
+        description: 'Legal translation with exact terminology, compliance review and secure handling for contracts, courts and corporate documents.',
+        bullets: ['Contracts and agreements', 'Court submissions', 'Notarized certificates', 'Corporate legal files']
+      },
+      medicalTranslation: {
+        title: t('footer.medicalTranslation'),
+        description: 'Medical translation delivered by specialists for clinical records, patient material, research documents and healthcare communications.',
+        bullets: ['Clinical reports', 'Patient records', 'Medical studies', 'Insurance and consent forms']
+      },
+      technicalTranslation: {
+        title: t('footer.technicalTranslation'),
+        description: 'Technical translation for manuals, product documentation, software and engineering content with consistent terminology.',
+        bullets: ['User manuals and guides', 'Product specifications', 'IT and software documentation', 'Engineering support materials']
+      },
+      subtitlesTranscription: {
+        title: t('footer.subtitles'),
+        description: 'Subtitles and transcription services that make video, e-learning and audio content accessible, accurate and ready for global audiences.',
+        bullets: ['Video subtitles', 'Audio transcription', 'Training materials', 'Marketing and corporate media']
+      },
+      websiteLocalization: {
+        title: t('footer.websiteLocalization'),
+        description: 'Website localization that aligns copy, UX, SEO and tone so your site feels native in every target market.',
+        bullets: ['Landing pages and product content', 'Navigation and UI text', 'SEO titles and metadata', 'Checkout and support pages']
+      }
+    },
+    DE: {
+      documentTranslation: {
+        title: t('footer.docTranslation'),
+        description: 'Verlässliche Dokumentenübersetzung für Urkunden, Berichte, Anträge und offizielle Unterlagen mit präziser Formatierung und Vertraulichkeit.',
+        bullets: ['Einwanderungs- und Personenurkunden', 'Akademische Zeugnisse und Diplome', 'Geschäftsberichte und -vorschläge', 'Rechts- und Verwaltungsunterlagen']
+      },
+      legalTranslation: {
+        title: t('footer.legalTranslation'),
+        description: 'Rechtsübersetzung mit exakter Terminologie, Compliance-Check und sicherer Bearbeitung für Verträge, Gerichte und Firmenunterlagen.',
+        bullets: ['Verträge und Vereinbarungen', 'Gerichtseinreichungen', 'Notarielle Urkunden', 'Unternehmensrechtliche Dokumente']
+      },
+      medicalTranslation: {
+        title: t('footer.medicalTranslation'),
+        description: 'Medizinische Übersetzung von Spezialisten für klinische Akten, Patientenmaterial, Forschungsdokumente und Gesundheitskommunikation.',
+        bullets: ['Klinische Berichte', 'Patientenakten', 'Medizinische Studien', 'Versicherungs- und Einwilligungsformulare']
+      },
+      technicalTranslation: {
+        title: t('footer.technicalTranslation'),
+        description: 'Technische Übersetzung für Handbücher, Produktdokumentation, Software und Ingenieurwesen mit konsistenter Terminologie.',
+        bullets: ['Benutzerhandbücher und Leitfäden', 'Produktspezifikationen', 'IT- und Softwaredokumentation', 'Ingenieurunterlagen']
+      },
+      subtitlesTranscription: {
+        title: t('footer.subtitles'),
+        description: 'Untertitel- und Transkriptionsdienstleistungen für Video-, E-Learning- und Audiomaterial, präzise und mehrsprachig vorbereitet.',
+        bullets: ['Video-Untertitel', 'Audio-Transkription', 'Schulungsunterlagen', 'Marketing- und Unternehmensmedien']
+      },
+      websiteLocalization: {
+        title: t('footer.websiteLocalization'),
+        description: 'Website-Lokalisierung, die Text, UX, SEO und Tonalität anpasst, damit Ihre Seite in jedem Zielmarkt natürlich wirkt.',
+        bullets: ['Landingpages und Produktinhalte', 'Navigations- und UI-Texte', 'SEO-Titel und Metadaten', 'Checkout- und Supportseiten']
+      }
+    }
+  };
+  const serviceCards = [
+    { path: '/document-translation', key: 'documentTranslation', icon: Briefcase, gradient: 'from-blue-400 to-blue-500', delay: '0ms' },
+    { path: '/legal-translation', key: 'legalTranslation', icon: Scale, gradient: 'from-green-400 to-green-500', delay: '100ms' },
+    { path: '/medical-translation', key: 'medicalTranslation', icon: Heart, gradient: 'from-pink-400 to-pink-500', delay: '200ms' },
+    { path: '/technical-translation', key: 'technicalTranslation', icon: FileText, gradient: 'from-indigo-400 to-indigo-500', delay: '300ms' },
+    { path: '/subtitles-transcription', key: 'subtitlesTranscription', icon: MessageSquare, gradient: 'from-yellow-400 to-yellow-500', delay: '400ms' },
+    { path: '/website-localization', key: 'websiteLocalization', icon: GlobeIcon, gradient: 'from-purple-400 to-purple-500', delay: '500ms' }
+  ] as const;
+
+  const icons = {
+    documentTranslation: FileText,
+    legalTranslation: Scale,
+    medicalTranslation: HeartPulse,
+    technicalTranslation: Settings,
+    subtitlesTranscription: Subtitles,
+    websiteLocalization: GlobeIcon
+  };
+
+  const list = (key: string) => t(key) as unknown as string[];
+
   // Scroll reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,6 +116,16 @@ export function Services() {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (!hash) return;
+
+    const target = document.getElementById(hash);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [location.hash]);
 
   return (
     <div className="pt-16">
@@ -125,65 +223,49 @@ export function Services() {
 
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Briefcase,
-                title: t('servicesPage.core.service1Title'),
-                description: t('servicesPage.core.service1Desc'),
-                gradient: 'from-blue-400 to-blue-500',
-                delay: '0ms'
-              },
-              {
-                icon: GlobeIcon,
-                title: t('servicesPage.core.service2Title'),
-                description: t('servicesPage.core.service2Desc'),
-                gradient: 'from-purple-400 to-purple-500',
-                delay: '100ms'
-              },
-              {
-                icon: TrendingUp,
-                title: t('servicesPage.core.service3Title'),
-                description: t('servicesPage.core.service3Desc'),
-                gradient: 'from-pink-400 to-pink-500',
-                delay: '200ms'
-              },
-              {
-                icon: Scale,
-                title: t('servicesPage.core.service4Title'),
-                description: t('servicesPage.core.service4Desc'),
-                gradient: 'from-green-400 to-green-500',
-                delay: '300ms'
-              },
-              {
-                icon: GraduationCap,
-                title: t('servicesPage.core.service5Title'),
-                description: t('servicesPage.core.service5Desc'),
-                gradient: 'from-yellow-400 to-yellow-500',
-                delay: '400ms'
-              },
-              {
-                icon: FileText,
-                title: t('servicesPage.core.service6Title'),
-                description: t('servicesPage.core.service6Desc'),
-                gradient: 'from-indigo-400 to-indigo-500',
-                delay: '500ms'
-              }
-            ].map((service, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-3xl p-8 card-shadow-premium hover-glow group transition-all duration-500 hover:scale-105 hover:-translate-y-2 reveal-on-scroll"
-                style={{ animationDelay: service.delay }}
-              >
-                {/* Icon */}
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
-                  <service.icon className="w-10 h-10 text-white" />
-                </div>
+            {serviceCards.map((service) => {
+              const Icon = icons[service.key];
+              const serviceCopy = serviceDetails[language === 'DE' ? 'DE' : 'EN'][service.key];
 
-                {/* Content */}
-                <h3 className="text-2xl font-bold text-[#151249] mb-4">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              </div>
-            ))}
+              return (
+                <div
+                  key={service.path}
+                  id={service.path.slice(1)}
+                  className="group flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white p-8 shadow-[0_24px_80px_-32px_rgba(23,23,38,0.25)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_32px_100px_-40px_rgba(23,23,38,0.28)] reveal-on-scroll"
+                  style={{ animationDelay: service.delay }}
+                >
+                  <div>
+                    <div className={`inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br ${service.gradient} text-white shadow-lg shadow-black/10 mb-6`}>
+                      <Icon className="h-10 w-10" />
+                    </div>
+
+                    <h3 className="text-2xl font-semibold text-[#151249] mb-4">{serviceCopy.title}</h3>
+                    <p className="text-gray-600 leading-relaxed mb-7">{serviceCopy.description}</p>
+
+                    <div className="space-y-3 mb-6">
+                      {serviceCopy.bullets.map((item, index) => (
+                        <div key={index} className="flex items-start gap-3 rounded-3xl bg-[#F8FAFF] p-4">
+                          <div className="mt-1 rounded-full bg-yellow-100 p-2 text-yellow-600">
+                            <CheckCircle2 className="h-4 w-4" />
+                          </div>
+                          <span className="text-sm font-medium text-slate-700">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-slate-200/80">
+                    <Link
+                      to={service.path}
+                      className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 px-5 py-3 text-sm font-semibold text-[#151249] transition-all duration-300 hover:brightness-110"
+                    >
+                      {t('servicePages.common.cta')}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

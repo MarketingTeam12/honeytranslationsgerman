@@ -182,7 +182,7 @@ export function DTPTypingService() {
                 <div className="flex flex-wrap gap-2 text-sm text-[#151249]">
                   {[
                     'English', 'Hindi', 'Tamil', 'Telugu', 'Malayalam', 'Kannada',
-                    'Marathi', 'Gujarati', 'Punjabi', 'Urdu', 'Arabic', 'French',
+                    'Marathi', 'Gujarati', 'Punjabi', 'Urdu', 'French',
                     'German', 'Spanish', 'and more'
                   ].map((lang, idx) => (
                     <span key={idx} className="font-semibold">

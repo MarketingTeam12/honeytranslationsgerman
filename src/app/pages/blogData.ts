@@ -9,6 +9,9 @@ export type BlogPost = {
   date: string;
   readTime: string;
   content: string[];
+  author?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export const blogCopy = {
@@ -112,16 +115,16 @@ export const blogPosts: Record<BlogLanguage, BlogPost[]> = {
       ]
     },
     {
-      slug: 'arabic-translation-cultural-nuances',
+      slug: 'cultural-nuances-in-translation',
       image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&h=500&fit=crop',
-      title: 'Cultural Nuances in Arabic Translation',
-      excerpt: 'Explore the importance of cultural sensitivity when translating content for Arabic-speaking markets.',
+      title: 'Cultural Nuances in Translation',
+      excerpt: 'Explore the importance of cultural sensitivity when translating content for international markets.',
       category: 'Culture',
       date: 'December 3, 2025',
       readTime: '7 min read',
       content: [
-        'Arabic translation involves more than replacing words. Tone, formality, region and cultural references all influence how a message is received.',
-        'Content for Arabic-speaking audiences should be reviewed for clarity, respect and regional fit.',
+        'Translation involves more than replacing words. Tone, formality, region and cultural references all influence how a message is received.',
+        'Content for international audiences should be reviewed for clarity, respect and regional fit.',
         'Cultural sensitivity helps brands communicate with confidence and avoid misunderstandings.'
       ]
     },
@@ -198,16 +201,16 @@ export const blogPosts: Record<BlogLanguage, BlogPost[]> = {
       ]
     },
     {
-      slug: 'arabische-uebersetzung-kulturelle-nuancen',
+      slug: 'kulturelle-nuancen-in-der-uebersetzung',
       image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&h=500&fit=crop',
-      title: 'Kulturelle Nuancen in der arabischen Übersetzung',
-      excerpt: 'Warum kulturelle Sensibilität bei Inhalten für arabischsprachige Märkte entscheidend ist.',
+      title: 'Kulturelle Nuancen in der Übersetzung',
+      excerpt: 'Warum kulturelle Sensibilität bei Inhalten für internationale Märkte entscheidend ist.',
       category: 'Kultur',
       date: '3. Dezember 2025',
       readTime: '7 Min. Lesezeit',
       content: [
-        'Arabische Übersetzung bedeutet mehr als den Austausch einzelner Wörter. Ton, Formalität, Region und kulturelle Bezüge beeinflussen die Wirkung.',
-        'Inhalte für arabischsprachige Zielgruppen sollten auf Klarheit, Respekt und regionale Passung geprüft werden.',
+        'Übersetzung bedeutet mehr als den Austausch einzelner Wörter. Ton, Formalität, Region und kulturelle Bezüge beeinflussen die Wirkung.',
+        'Inhalte für internationale Zielgruppen sollten auf Klarheit, Respekt und regionale Passung geprüft werden.',
         'Kulturelle Sensibilität hilft Marken, sicher zu kommunizieren und Missverständnisse zu vermeiden.'
       ]
     },

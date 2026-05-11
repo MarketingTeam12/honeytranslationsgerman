@@ -282,7 +282,7 @@ export function SubtitlingService() {
               <div className="flex flex-wrap justify-center gap-3 text-gray-700">
                 {[
                   'English', 'Hindi', 'Tamil', 'Telugu', 'Malayalam', 'Kannada',
-                  'Marathi', 'Gujarati', 'Punjabi', 'Urdu', 'Arabic', 'French',
+                  'Marathi', 'Gujarati', 'Punjabi', 'Urdu', 'French',
                   'German', 'Spanish', 'and more'
                 ].map((language, idx) => (
                   <span key={idx} className="font-semibold">

@@ -19,6 +19,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem('language', language);
     document.documentElement.lang = language === 'DE' ? 'de' : 'en';
+    document.documentElement.dir = 'ltr';
   }, [language]);
 
   const setLanguage = (lang: Language) => {
@@ -34,7 +35,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       value = value?.[k];
     }
 
-    return value || key;
+    if (value !== undefined && value !== null) {
+      return value;
+    }
+
+    return key;
   };
 
   return (
@@ -102,7 +107,7 @@ const translationsEN = {
     },
     faq: {
       question1: 'What languages do you support in Germany?',
-      answer1: 'We provide certified translation services in English, French, Dutch, German, Arabic, Spanish and 120+ languages for clients in Berlin, Munich, Hamburg, Frankfurt and across Germany.',
+      answer1: 'We provide certified translation services in English, French, Dutch, German, Spanish and 120+ languages for clients in Berlin, Munich, Hamburg, Frankfurt and across Germany.',
       question2: 'How long does certified translation take in Germany?',
       answer2: 'Most standard documents are delivered within 24-48 hours. Express certified translation is available for urgent German administrative, legal, academic and business deadlines.',
       question3: 'Are your translations accepted in Germany?',
@@ -182,8 +187,6 @@ const translationsEN = {
       email: 'Email Address',
       phone: 'Phone Number',
       languagePair: 'Select Language Pair',
-      enToAr: 'English → Arabic',
-      arToEn: 'Arabic → English',
       enToDe: 'English → German',
       deToEn: 'German → English',
       enToFr: 'English → French',
@@ -375,6 +378,171 @@ const translationsEN = {
       badge1: 'Secure & Confidential',
       badge2: 'Fast Turnaround',
       badge3: 'Quality Guaranteed'
+    }
+  },
+  servicePages: {
+    common: {
+      cta: 'Request a Quote',
+      back: 'View All Services',
+      details: 'Service Details',
+      benefits: 'Benefits',
+      languages: 'Supported Languages',
+      process: 'Process',
+      whyChooseTitle: 'Why Choose Our Translation Services?',
+      whyChooseSubtitle: 'We don’t just translate words — we translate meaning, tone and cultural context.',
+      detailsDescription: 'Every service includes secure handling, subject expertise, and local knowledge tailored to your document needs.',
+      processDescription: 'Each step is designed for clarity, speed and a premium service experience.',
+      languagesTitle: 'Translation Coverage',
+      languagesSubtitle: 'Languages, cultures and regions supported by our professional teams.',
+      workflowLabel: 'Workflow',
+      processBadge: 'Managed by specialists',
+      coverageBadge: 'Global coverage',
+      nativeTeams: 'Native linguists',
+      testimonialEyebrow: 'Client feedback',
+      testimonialTitle: 'What Our Clients Say',
+      trustedQuality: 'Trusted quality',
+      valueLabel: 'Service value',
+      statLabels: ['Quality', 'Delivery', 'Security'],
+      whyChooseCards: [
+        { title: '100% Human Translation', description: 'No machine output — only expert human linguists.' },
+        { title: 'Native & Expert Linguists', description: 'Subject-matter experts in your industry.' },
+        { title: 'Strict Confidentiality', description: 'Data security & NDA protection for every project.' },
+        { title: 'Fast Turnaround', description: 'Quick delivery with consistent quality.' },
+        { title: 'Affordable Pricing', description: 'Transparent rates with no hidden costs.' },
+        { title: 'Global Coverage', description: 'Any language, any document, anywhere.' }
+      ],
+      expertiseTitle: 'Our Translation Expertise',
+      expertiseSubtitle: 'We offer expert translation services across multiple industries.',
+      expertiseCards: [
+        { title: 'Legal Translation', description: 'Contracts, court documents and corporate legal files with certified precision.' },
+        { title: 'Medical Translation', description: 'Clinical reports, patient records and healthcare documentation handled carefully.' },
+        { title: 'Certified Translation', description: 'Official certificates and government documents prepared for approval.' },
+        { title: 'Business Translation', description: 'Reports, proposals and marketing communication for professional audiences.' },
+        { title: 'Financial Translation', description: 'Financial statements, reports and investment materials translated accurately.' },
+        { title: 'Website Localization', description: 'Web copy, UX and SEO adapted for local audiences and international users.' },
+        { title: 'Technical Documentation', description: 'Manuals, specs and software content translated with precise terminology.' },
+        { title: 'Multimedia Translation', description: 'Subtitles, scripts and audio transcription for videos and digital media.' }
+      ],
+      relatedServicesTitle: 'Our Translation Expertise',
+      relatedServicesSubtitle: 'Service packages for documents, business and official translation needs.',
+      relatedServicesCards: [
+        {
+          title: 'Certified Translation',
+          description: 'Certificates accepted by authorities and official organizations.',
+          bullets: ['Certificates, birth, marriage, education', 'Immigration and security documentation', 'Government and EU compliance documents']
+        },
+        {
+          title: 'Business Translation',
+          description: 'Professional support for your business communication and market expansion.',
+          bullets: ['Business proposals & reports', 'Financial documents', 'Corporate communication', 'EU-facing market content']
+        }
+      ],
+      professionalTitle: 'What Makes Us Professional',
+      professionalSubtitle: 'Professional translation is more than accuracy — it is trust, clarity and consistency.',
+      professionalCards: [
+        { title: 'Accuracy', description: 'We maintain exact meaning while preserving natural wording.' },
+        { title: 'Localization', description: 'Copy is adapted for target audiences and cultural nuance.' },
+        { title: 'Native Experts', description: 'All work is reviewed by native-speaking language professionals.' },
+        { title: 'Fast Delivery', description: 'Efficient project management keeps your deadlines on track.' },
+        { title: 'Secure Handling', description: 'Confidential documents are protected throughout the process.' },
+        { title: 'Quality Assurance', description: 'Every project passes a final review for consistency and accuracy.' }
+      ],
+      humanTranslationTitle: 'Our Key to Accuracy — Human Translation',
+      humanTranslationSubtitle: 'Machines can translate words, but humans translate tone, intent and cultural meaning.',
+      humanTranslationDescription: 'Our linguists carefully preserve the meaning, tone and cultural context of your original message.',
+      humanTranslationBlocks: [
+        { title: 'Cultural nuance', description: 'We choose words that fit the regional audience and local expectations.' },
+        { title: 'Emotional tone', description: 'Your message keeps its feeling and persuasive power in every language.' },
+        { title: 'Context & intent', description: 'We preserve the original purpose and structure of the message.' }
+      ],
+      testimonial: {
+        quote: 'Accurate translations, fast delivery, and excellent service. Honey Translation is our go-to language partner.',
+        author: 'Verified Client',
+        role: 'Global business'
+      },
+      getStartedTitle: 'Get Started Today',
+      getStartedSubtitle: 'Break language barriers with confidence.',
+      ctaTitle: 'Ready to start your project?',
+      ctaText: 'Send us your requirements and we will respond with a clear quote.',
+      supportedLanguages: ['English', 'German', 'French', 'Dutch', 'Spanish', 'Hindi', '120+ languages on request']
+    },
+    documentTranslation: {
+      badge: 'Document Translation',
+      title: 'Professional Document Translation',
+      subtitle: 'Accurate, confidential translation for personal, business, academic and official documents.',
+      heroFeatures: ['Certified personal documents', 'Business reports and contracts', 'Official language support'],
+      heroStats: ['99.8% accuracy', 'Fast 24-48h delivery', 'Secure document handling'],
+      description: 'We translate documents with careful attention to terminology, formatting and purpose so your content is clear and ready to use.',
+      visualTitle: 'Document workflow hub',
+      visualSubtitle: 'Certificates, forms and business files move through review, translation and final formatting with care.',
+      details: ['Certificates and personal records', 'Business documents and reports', 'Academic transcripts and diplomas', 'Immigration and administrative files'],
+      benefits: ['Human-reviewed accuracy', 'Secure document handling', 'Clear formatting support', 'Remote service for clients worldwide'],
+      process: ['Upload your document', 'Review & quote', 'Expert translation', 'Quality check', 'Secure delivery']
+    },
+    legalTranslation: {
+      badge: 'Legal Translation',
+      title: 'Legal Translation Services',
+      subtitle: 'Precise translation for contracts, agreements, certificates and legal communication.',
+      heroFeatures: ['Contract and court-ready text', 'Certified legal terminology', 'Confidential legal workflows'],
+      heroStats: ['Legal accuracy', 'Secure review', 'Certified delivery'],
+      description: 'Legal content needs exact meaning and strict confidentiality. Our process protects terminology, structure and intent.',
+      visualTitle: 'Legal review path',
+      visualSubtitle: 'Contracts and official files are handled through a structured, confidential review process.',
+      details: ['Contracts and agreements', 'Court and immigration documents', 'Certificates and affidavits', 'Corporate legal records'],
+      benefits: ['Legal terminology care', 'Confidential workflows', 'Human review', 'Consistent formatting'],
+      process: ['Share your legal file', 'Review & quote', 'Expert legal translation', 'Compliance review', 'Secure delivery']
+    },
+    medicalTranslation: {
+      badge: 'Medical Translation',
+      title: 'Medical Translation Services',
+      subtitle: 'Clear, careful translation for healthcare, clinical and patient-facing documents.',
+      heroFeatures: ['Patient records', 'Clinical reports', 'Medical consent forms'],
+      heroStats: ['Clinical accuracy', 'Sensitive handling', 'Regulatory compliance'],
+      description: 'We handle medical content with sensitivity, accuracy and privacy, preserving critical details across languages.',
+      visualTitle: 'Clinical clarity flow',
+      visualSubtitle: 'Healthcare content is translated with medical terminology checks, privacy and patient-friendly clarity.',
+      details: ['Medical reports and records', 'Patient information', 'Clinical and healthcare documents', 'Insurance and hospital files'],
+      benefits: ['Terminology accuracy', 'Privacy-focused handling', 'Readable patient communication', 'Reliable review process'],
+      process: ['Send your medical content', 'Review & quote', 'Expert medical translation', 'Clinical quality check', 'Secure delivery']
+    },
+    technicalTranslation: {
+      badge: 'Technical Translation',
+      title: 'Technical Translation Services',
+      subtitle: 'Specialized translation for manuals, specifications, software and technical documentation.',
+      heroFeatures: ['Manuals and guides', 'Software instructions', 'Engineering specifications'],
+      heroStats: ['Technical terminology', 'Consistent output', 'Field-tested review'],
+      description: 'Technical content must be precise and usable. We keep terminology consistent and instructions clear.',
+      visualTitle: 'Technical precision grid',
+      visualSubtitle: 'Manuals, specifications and software strings stay consistent from glossary to final delivery.',
+      details: ['User manuals and guides', 'Product specifications', 'Software and IT documentation', 'Engineering and industrial content'],
+      benefits: ['Consistent terminology', 'Subject-aware translators', 'Formatting support', 'Quality checks before delivery'],
+      process: ['Share technical files', 'Review & quote', 'Expert technical translation', 'Technical validation', 'Deliver ready-to-use files']
+    },
+    subtitlesTranscription: {
+      badge: 'Subtitles & Transcription',
+      title: 'Subtitles & Transcription Services',
+      subtitle: 'Readable subtitles and accurate transcripts for video, audio, training and digital content.',
+      heroFeatures: ['Video subtitle creation', 'Audio transcription', 'Multilingual timing'],
+      heroStats: ['Clear timing', 'Readable subtitles', 'Platform-ready files'],
+      description: 'We help make spoken content accessible, searchable and ready for multilingual audiences.',
+      visualTitle: 'Media timing studio',
+      visualSubtitle: 'Audio and video content becomes synchronized subtitles, clean transcripts and export-ready files.',
+      details: ['Video subtitles', 'Audio and video transcription', 'Training and webinar content', 'Corporate and marketing media'],
+      benefits: ['Clear timing and readability', 'Accurate transcripts', 'Multilingual support', 'Platform-ready delivery'],
+      process: ['Share audio or video files', 'Transcribe or prepare subtitle text', 'Review timing and readability', 'Sync and quality check', 'Deliver platform-ready files']
+    },
+    websiteLocalization: {
+      badge: 'Website Localization',
+      title: 'Website Localization Services',
+      subtitle: 'Localized websites, landing pages and digital content that feel natural to your target audience.',
+      heroFeatures: ['Localized UX copy', 'SEO-friendly adaptation', 'Brand-consistent tone'],
+      heroStats: ['Global-ready sites', 'Local market fit', 'SEO optimized'],
+      description: 'We adapt website copy, UI text, SEO metadata and user flows so your online presence sounds local, trustworthy and clear.',
+      visualTitle: 'Localization launch map',
+      visualSubtitle: 'Web pages, product flows and SEO content are adapted so visitors feel the experience was written for them.',
+      details: ['Website pages and landing pages', 'Navigation and button text', 'SEO titles and metadata', 'Product and checkout content'],
+      benefits: ['Natural local tone', 'SEO-friendly adaptation', 'Consistent brand voice', 'Better user confidence'],
+      process: ['Review website content', 'Map target audience and SEO intent', 'Localize copy and interface text', 'Review and deliver final content', 'Launch with confidence']
     }
   },
   footer: {
@@ -671,7 +839,7 @@ const translationsDE = {
     },
     faq: {
       question1: 'Welche Sprachen unterstützen wir in Deutschland?',
-      answer1: 'Wir bieten zertifizierte Übersetzungsdienste in Englisch, Deutsch, Spanisch, Arabisch und über 120 weiteren Sprachen für Kunden in Berlin, München, Hamburg, Frankfurt und ganz Deutschland.',
+      answer1: 'Wir bieten zertifizierte Übersetzungsdienste in Englisch, Deutsch, Spanisch und über 120 weiteren Sprachen für Kunden in Berlin, München, Hamburg, Frankfurt und ganz Deutschland.',
       question2: 'Wie lange dauert eine zertifizierte Übersetzung in Deutschland?',
       answer2: 'Die meisten Standarddokumente werden innerhalb von 24-48 Stunden geliefert. Expresszertifizierungen sind für dringende deutsche Behörden-, Rechts-, Studien- und Geschäftstermine möglich.',
       question3: 'Werden Ihre Übersetzungen in Deutschland akzeptiert?',
@@ -751,8 +919,6 @@ const translationsDE = {
       email: 'E-Mail-Adresse',
       phone: 'Telefonnummer',
       languagePair: 'Sprachpaar auswählen',
-      enToAr: 'Englisch → Arabisch',
-      arToEn: 'Arabisch → Englisch',
       enToDe: 'Englisch → Deutsch',
       deToEn: 'Deutsch → Englisch',
       enToFr: 'Englisch → Französisch',
@@ -944,6 +1110,171 @@ const translationsDE = {
       badge1: 'Sicher & vertraulich',
       badge2: 'Schnelle Bearbeitung',
       badge3: 'Qualität garantiert'
+    }
+  },
+  servicePages: {
+    common: {
+      cta: 'Angebot anfordern',
+      back: 'Alle Dienstleistungen ansehen',
+      details: 'Servicedetails',
+      benefits: 'Vorteile',
+      languages: 'Unterstützte Sprachen',
+      process: 'Prozess',
+      whyChooseTitle: 'Warum unsere Übersetzungsdienste?',
+      whyChooseSubtitle: 'Wir übersetzen nicht nur Wörter — wir übersetzen Bedeutung, Ton und kulturellen Kontext.',
+      detailsDescription: 'Jeder Service umfasst sicheren Umgang, Fachwissen und lokale Kenntnisse, die auf Ihre Dokumentanforderungen zugeschnitten sind.',
+      processDescription: 'Jeder Schritt ist auf Klarheit, Tempo und ein erstklassiges Serviceerlebnis ausgelegt.',
+      languagesTitle: 'Übersetzungsabdeckung',
+      languagesSubtitle: 'Sprachen, Kulturen und Regionen, die von unseren professionellen Teams unterstützt werden.',
+      workflowLabel: 'Workflow',
+      processBadge: 'Von Spezialisten betreut',
+      coverageBadge: 'Globale Abdeckung',
+      nativeTeams: 'Muttersprachliche Linguisten',
+      testimonialEyebrow: 'Kundenfeedback',
+      testimonialTitle: 'Was unsere Kunden sagen',
+      trustedQuality: 'Verlässliche Qualität',
+      valueLabel: 'Servicewert',
+      statLabels: ['Qualität', 'Lieferung', 'Sicherheit'],
+      whyChooseCards: [
+        { title: '100 % menschliche Übersetzung', description: 'Keine maschinelle Ausgabe — nur erfahrene menschliche Linguisten.' },
+        { title: 'Muttersprachliche Experten', description: 'Fachspezialisten für Ihre Branche.' },
+        { title: 'Strenge Vertraulichkeit', description: 'Datensicherheit und NDA-Schutz für jedes Projekt.' },
+        { title: 'Schnelle Lieferung', description: 'Zügige Umsetzung bei gleichbleibender Qualität.' },
+        { title: 'Faire Preise', description: 'Transparente Kosten ohne versteckte Gebühren.' },
+        { title: 'Weltweite Abdeckung', description: 'Jede Sprache, jedes Dokument, überall.' }
+      ],
+      expertiseTitle: 'Unsere Übersetzungsexpertise',
+      expertiseSubtitle: 'Wir bieten professionelle Übersetzungen für verschiedene Branchen.',
+      expertiseCards: [
+        { title: 'Rechtsübersetzung', description: 'Verträge, Gerichtsunterlagen und Firmendokumente mit zertifizierter Präzision.' },
+        { title: 'Medizinische Übersetzung', description: 'Klinische Berichte, Patientenakten und medizinische Dokumente sorgfältig behandelt.' },
+        { title: 'Zertifizierte Übersetzung', description: 'Offizielle Urkunden und Behördenunterlagen für die Anerkennung vorbereitet.' },
+        { title: 'Geschäftsübersetzung', description: 'Berichte, Angebote und Marketingkommunikation für professionelle Zielgruppen.' },
+        { title: 'Finanzübersetzung', description: 'Finanzberichte, Bilanzen und Investoreninformationen präzise übersetzt.' },
+        { title: 'Website-Lokalisierung', description: 'Webtexte, UX und SEO für lokale Zielgruppen und internationale Nutzer angepasst.' },
+        { title: 'Technische Dokumentation', description: 'Handbücher, Spezifikationen und Softwareinhalte mit genauer Terminologie übersetzt.' },
+        { title: 'Multimedia-Übersetzung', description: 'Untertitel, Skripte und Audioinhalte für Video- und Digitalmedien.' }
+      ],
+      relatedServicesTitle: 'Unsere Übersetzungserfahrung',
+      relatedServicesSubtitle: 'Servicepakete für Dokumente, Geschäft und offizielle Übersetzungen.',
+      relatedServicesCards: [
+        {
+          title: 'Zertifizierte Übersetzung',
+          description: 'Urkunden, die von Behörden und offiziellen Stellen akzeptiert werden.',
+          bullets: ['Urkunden, Geburt, Heirat, Ausbildung', 'Einwanderungs- und Sicherheitsdokumente', 'Regierungs- und EU-konforme Dokumente']
+        },
+        {
+          title: 'Geschäftsübersetzung',
+          description: 'Professionelle Unterstützung für Ihre Geschäftskommunikation und Marktexpansion.',
+          bullets: ['Geschäftsvorschläge & Berichte', 'Finanzdokumente', 'Unternehmenskommunikation', 'EU-orientierte Marktinhalte']
+        }
+      ],
+      professionalTitle: 'Was uns professionell macht',
+      professionalSubtitle: 'Professionelle Übersetzung bedeutet mehr als Genauigkeit – es bedeutet Vertrauen, Klarheit und Konsistenz.',
+      professionalCards: [
+        { title: 'Genauigkeit', description: 'Wir erhalten die genaue Bedeutung bei natürlicher Wortwahl.' },
+        { title: 'Lokalisierung', description: 'Texte werden auf Zielgruppen und kulturelle Nuancen abgestimmt.' },
+        { title: 'Muttersprachliche Experten', description: 'Alle Arbeiten werden von muttersprachlichen Sprachexperten geprüft.' },
+        { title: 'Schnelle Lieferung', description: 'Effizientes Projektmanagement hält Ihre Fristen ein.' },
+        { title: 'Sichere Bearbeitung', description: 'Vertrauliche Dokumente werden während des gesamten Prozesses geschützt.' },
+        { title: 'Qualitätssicherung', description: 'Jedes Projekt durchläuft eine abschließende Prüfung auf Konsistenz und Genauigkeit.' }
+      ],
+      humanTranslationTitle: 'Unser Schlüssel zur Genauigkeit – menschliche Übersetzung',
+      humanTranslationSubtitle: 'Maschinen übersetzen Worte, Menschen übersetzen Ton, Absicht und kulturelle Bedeutung.',
+      humanTranslationDescription: 'Unsere Linguisten bewahren Bedeutung, Ton und kulturellen Kontext Ihrer Originalbotschaft.',
+      humanTranslationBlocks: [
+        { title: 'Kulturelle Nuancen', description: 'Wir wählen Worte, die zur regionalen Zielgruppe passen.' },
+        { title: 'Emotionale Tonalität', description: 'Ihre Botschaft behält Wirkung und Überzeugungskraft.' },
+        { title: 'Kontext & Absicht', description: 'Wir bewahren Zweck und Struktur der ursprünglichen Mitteilung.' }
+      ],
+      testimonial: {
+        quote: 'Genaue Übersetzungen, schnelle Lieferung und exzellenter Service. Honey Translation ist unser Sprachpartner.',
+        author: 'Verifizierter Kunde',
+        role: 'Globales Business'
+      },
+      getStartedTitle: 'Jetzt starten',
+      getStartedSubtitle: 'Überwinden Sie Sprachbarrieren mit selbstbewusster Übersetzung.',
+      ctaTitle: 'Bereit für Ihr Projekt?',
+      ctaText: 'Senden Sie uns Ihre Anforderungen und wir melden uns mit einem klaren Angebot.',
+      supportedLanguages: ['Englisch', 'Deutsch', 'Französisch', 'Niederländisch', 'Spanisch', 'Hindi', '120+ Sprachen auf Anfrage']
+    },
+    documentTranslation: {
+      badge: 'Dokumentenübersetzung',
+      title: 'Professionelle Dokumentenübersetzung',
+      subtitle: 'Präzise und vertrauliche Übersetzungen für persönliche, geschäftliche, akademische und offizielle Dokumente.',
+      heroFeatures: ['Zertifizierte persönliche Dokumente', 'Geschäftsberichte und Verträge', 'Offizielle Sprachunterstützung'],
+      heroStats: ['99,8 % Genauigkeit', 'Schnelle Lieferung in 24–48 Stunden', 'Sichere Dokumentenbearbeitung'],
+      description: 'Wir übersetzen Dokumente mit sorgfältiger Beachtung von Terminologie, Formatierung und Verwendungszweck.',
+      visualTitle: 'Dokumenten-Workflow',
+      visualSubtitle: 'Urkunden, Formulare und Geschäftsdateien durchlaufen Prüfung, Übersetzung und finale Formatierung mit Sorgfalt.',
+      details: ['Urkunden und persönliche Unterlagen', 'Geschäftsdokumente und Berichte', 'Zeugnisse und Diplome', 'Einwanderungs- und Verwaltungsunterlagen'],
+      benefits: ['Menschlich geprüfte Genauigkeit', 'Sichere Dokumentenbearbeitung', 'Klare Formatierungsunterstützung', 'Remote-Service für Kunden weltweit'],
+      process: ['Dokument einreichen', 'Prüfung & Angebot', 'Fachübersetzung', 'Qualitätsprüfung', 'Sichere Lieferung']
+    },
+    legalTranslation: {
+      badge: 'Rechtsübersetzung',
+      title: 'Rechtsübersetzungen',
+      subtitle: 'Präzise Übersetzungen für Verträge, Vereinbarungen, Urkunden und rechtliche Kommunikation.',
+      heroFeatures: ['Gerichtsfeste Texte', 'Zertifizierte Rechtsterminologie', 'Vertrauliche Abläufe'],
+      heroStats: ['Rechtliche Präzision', 'Sichere Prüfung', 'Zertifizierte Lieferung'],
+      description: 'Juristische Inhalte benötigen exakte Bedeutung und strenge Vertraulichkeit. Unser Prozess schützt Terminologie, Struktur und Absicht.',
+      visualTitle: 'Juristischer Prüfpfad',
+      visualSubtitle: 'Verträge und offizielle Dateien werden in einem strukturierten, vertraulichen Prozess bearbeitet.',
+      details: ['Verträge und Vereinbarungen', 'Gerichts- und Einwanderungsdokumente', 'Urkunden und eidesstattliche Erklärungen', 'Unternehmensrechtliche Unterlagen'],
+      benefits: ['Sorgfalt bei Rechtsterminologie', 'Vertrauliche Abläufe', 'Menschliche Prüfung', 'Konsistente Formatierung'],
+      process: ['Rechtstext senden', 'Prüfung & Angebot', 'Fachübersetzung', 'Compliance-Check', 'Sichere Lieferung']
+    },
+    medicalTranslation: {
+      badge: 'Medizinübersetzung',
+      title: 'Medizinische Übersetzungen',
+      subtitle: 'Klare und sorgfältige Übersetzungen für Gesundheitswesen, Klinik und patientennahe Dokumente.',
+      heroFeatures: ['Patientenakten', 'Klinische Berichte', 'Einwilligungsformulare'],
+      heroStats: ['Klinische Genauigkeit', 'Sensible Bearbeitung', 'Regulatorische Compliance'],
+      description: 'Wir behandeln medizinische Inhalte sensibel, genau und vertraulich, damit wichtige Details erhalten bleiben.',
+      visualTitle: 'Klinischer Klarheitsfluss',
+      visualSubtitle: 'Gesundheitsinhalte werden mit Terminologieprüfung, Datenschutz und patientennaher Verständlichkeit übersetzt.',
+      details: ['Medizinische Berichte und Akten', 'Patienteninformationen', 'Klinische und gesundheitsbezogene Dokumente', 'Versicherungs- und Krankenhausunterlagen'],
+      benefits: ['Präzise Terminologie', 'Datenschutzorientierte Bearbeitung', 'Verständliche Patientenkommunikation', 'Zuverlässiger Prüfprozess'],
+      process: ['Medizinische Inhalte senden', 'Prüfung & Angebot', 'Fachübersetzung', 'Klinische Qualitätsprüfung', 'Sichere Lieferung']
+    },
+    technicalTranslation: {
+      badge: 'Technische Übersetzung',
+      title: 'Technische Übersetzungen',
+      subtitle: 'Fachübersetzungen für Handbücher, Spezifikationen, Software und technische Dokumentation.',
+      heroFeatures: ['Handbücher und Anleitungen', 'Software- und Systemtexte', 'Engineering-Spezifikationen'],
+      heroStats: ['Technische Terminologie', 'Konsistente Ausgabe', 'Feldgeprüfte Prüfung'],
+      description: 'Technische Inhalte müssen präzise und nutzbar sein. Wir halten Terminologie konsistent und Anweisungen klar.',
+      visualTitle: 'Technisches Präzisionsraster',
+      visualSubtitle: 'Handbücher, Spezifikationen und Softwaretexte bleiben vom Glossar bis zur Lieferung konsistent.',
+      details: ['Benutzerhandbücher und Anleitungen', 'Produktspezifikationen', 'Software- und IT-Dokumentation', 'Technische und industrielle Inhalte'],
+      benefits: ['Konsistente Terminologie', 'Fachkundige Übersetzer', 'Formatierungsunterstützung', 'Qualitätsprüfung vor Lieferung'],
+      process: ['Technische Dateien senden', 'Prüfung & Angebot', 'Fachübersetzung', 'Technische Validierung', 'Bereitstellung gebrauchsfertiger Dateien']
+    },
+    subtitlesTranscription: {
+      badge: 'Untertitel & Transkription',
+      title: 'Untertitel- und Transkriptionsdienste',
+      subtitle: 'Lesbare Untertitel und genaue Transkripte für Video, Audio, Schulungen und digitale Inhalte.',
+      heroFeatures: ['Videountertitel', 'Audio-Transkription', 'Mehrsprachige Synchronisierung'],
+      heroStats: ['Präzises Timing', 'Gute Lesbarkeit', 'Plattformbereite Dateien'],
+      description: 'Wir machen gesprochene Inhalte zugänglich, durchsuchbar und bereit für mehrsprachige Zielgruppen.',
+      visualTitle: 'Media-Timing-Studio',
+      visualSubtitle: 'Audio- und Videoinhalte werden zu synchronisierten Untertiteln, sauberen Transkripten und exportfertigen Dateien.',
+      details: ['Videountertitel', 'Audio- und Videotranskription', 'Schulungs- und Webinar-Inhalte', 'Unternehmens- und Marketingmedien'],
+      benefits: ['Klare Timing- und Lesbarkeitsprüfung', 'Genaue Transkripte', 'Mehrsprachige Unterstützung', 'Plattformgerechte Lieferung'],
+      process: ['Audio- oder Videodateien senden', 'Transkript oder Untertiteltext erstellen', 'Timing und Lesbarkeit prüfen', 'Synchronisierung & Qualitätsprüfung', 'Plattformgerechte Dateien liefern']
+    },
+    websiteLocalization: {
+      badge: 'Website-Lokalisierung',
+      title: 'Website-Lokalisierung',
+      subtitle: 'Lokalisierte Websites, Landingpages und digitale Inhalte, die für Ihre Zielgruppe natürlich wirken.',
+      heroFeatures: ['Lokalisierte UX-Texte', 'SEO-optimierte Inhalte', 'Markenkonforme Tonalität'],
+      heroStats: ['Global bereit', 'Marktgerecht', 'SEO optimiert'],
+      description: 'Wir passen Website-Texte, UI-Inhalte, SEO-Metadaten und Nutzerführung an, damit Ihre Online-Präsenz lokal, vertrauenswürdig und klar wirkt.',
+      visualTitle: 'Lokalisierungs-Launch-Map',
+      visualSubtitle: 'Webseiten, Produktabläufe und SEO-Inhalte werden angepasst, damit sich die Erfahrung lokal geschrieben anfühlt.',
+      details: ['Webseiten und Landingpages', 'Navigation und Button-Texte', 'SEO-Titel und Metadaten', 'Produkt- und Checkout-Inhalte'],
+      benefits: ['Natürlicher lokaler Ton', 'SEO-freundliche Anpassung', 'Konsistente Markenstimme', 'Mehr Nutzervertrauen'],
+      process: ['Website-Inhalte prüfen', 'Zielgruppe und SEO-Intention erfassen', 'Copy und Interface-Texte lokalisieren', 'Finale Inhalte prüfen und liefern', 'Mit Sicherheit live schalten']
     }
   },
   footer: {

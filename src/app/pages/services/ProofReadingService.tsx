@@ -382,7 +382,7 @@ export function ProofReadingService() {
             <div className="flex flex-wrap justify-center gap-4 text-lg text-[#151249]">
               {[
                 'English', 'Hindi', 'Tamil', 'Telugu', 'Malayalam', 'Kannada',
-                'Arabic', 'French', 'German', 'Spanish', 'Chinese', 'Japanese', 
+                'French', 'German', 'Spanish', 'Chinese', 'Japanese', 
                 'Korean', 'Russian', 'Portuguese', 'Italian', 'Urdu', 'Bengali',
                 'Marathi', 'Punjabi', 'and more'
               ].map((lang, idx) => (

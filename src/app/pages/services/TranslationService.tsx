@@ -378,7 +378,7 @@ export function TranslationService() {
           <div className="bg-soft-blue rounded-3xl p-10 card-shadow-premium mb-8">
             <div className="flex flex-wrap justify-center gap-4 text-lg text-[#151249]">
               {[
-                'Spanish', 'Arabic', 'French', 'German', 'Chinese', 'Japanese', 
+                'Spanish', 'French', 'German', 'Chinese', 'Japanese', 
                 'Korean', 'Hindi', 'Tamil', 'Urdu', 'Russian', 'Portuguese',
                 'Italian', 'Dutch', 'Swedish', 'Thai', 'Vietnamese', 'Gujarati',
                 'Bengali', 'Marathi', 'Punjabi', 'and many more'

@@ -1,19 +1,41 @@
 import { Calendar, ArrowRight, ChevronRight, Globe, Mail } from 'lucide-react';
 import type { FormEvent } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { blogCopy, blogPosts, featuredPosts } from './blogData';
+import { fetchPublishedBlogs, resolveBlogImage } from '../lib/blogApi';
 
 export function Blog() {
   const { language } = useLanguage();
   const copy = blogCopy[language];
   const featuredPost = featuredPosts[language];
-  const posts = blogPosts[language];
+  const [dynamicPosts, setDynamicPosts] = useState<typeof blogPosts.EN>([]);
+  const posts = [...dynamicPosts, ...blogPosts[language]];
   const [activeFilter, setActiveFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const normalizedFilter = language === 'DE' && activeFilter === 'All' ? 'Alle' : activeFilter;
+
+  useEffect(() => {
+    let isMounted = true;
+
+    fetchPublishedBlogs()
+      .then((blogs) => {
+        if (isMounted) {
+          setDynamicPosts(blogs);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setDynamicPosts([]);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleNewsletterSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -77,8 +99,8 @@ export function Blog() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
               {/* Image */}
               <div className="relative overflow-hidden aspect-video lg:aspect-auto">
-                <img 
-                  src={featuredPost.image} 
+                  <img 
+                    src={resolveBlogImage(featuredPost.image)} 
                   alt={featuredPost.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -158,7 +180,7 @@ export function Blog() {
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-video">
                   <img 
-                    src={post.image} 
+                    src={resolveBlogImage(post.image)} 
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
