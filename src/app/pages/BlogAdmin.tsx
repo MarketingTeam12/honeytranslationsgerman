@@ -125,10 +125,6 @@ export function BlogAdminLogin() {
                   <ArrowRight className="h-5 w-5" />
                 </button>
               </form>
-
-              <p className="mt-6 rounded-2xl bg-blue-50 px-4 py-3 text-xs font-medium leading-5 text-blue-800">
-                Demo credentials: admin@honeytranslations.com / admin123
-              </p>
             </div>
           </section>
         </div>
@@ -255,12 +251,7 @@ export function BlogAdminDashboard() {
                   <input name="slug" className="admin-input admin-input-compact" placeholder="example-blog-slug" required />
                 </Field>
                 <Field label="Category">
-                  <select name="category" className="admin-input admin-input-compact" required defaultValue="">
-                    <option value="" disabled>Select category</option>
-                    {categories.map((category) => (
-                      <option key={category}>{category}</option>
-                    ))}
-                  </select>
+                  <input type="text" name="category" className="admin-input admin-input-compact" placeholder="Enter category" required />
                 </Field>
                 <Field label="Author">
                   <div className="relative">
